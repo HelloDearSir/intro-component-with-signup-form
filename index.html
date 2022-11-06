@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Frontend Mentor | Intro component with sign up form</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+  <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+<div class="left-side">
+  <h1> <b>Learn to code by watching others </b>  </h1>
+  <p> See how experienced developers solve problems in real-time. Watching scripted tutorials is great, 
+    but understanding how developers think is invaluable. </p>
+</div>
+
+ <div class="right-side">
+  <div class="try-free">
+    <p><b>Try it free 7 days</b> then $20/mo. thereafter </p>
+  </div>
+
+ <div class="container">
+  <div class="input-divs">
+  <input type="text" placeholder="First Name" id="FirstName" class="FName">
+  </div>
+  <div class="input-divs">
+  <input type="text" placeholder="Last Name" id="LastName" class="LName">
+  </div>
+  <div class="input-divs">
+    <input type="text" placeholder="Email Address" id="EmailAddress" class="EAddress">
+  </div>
+  <div class="input-divs">
+  <input type="text" placeholder="Password" id="Password" class="Pword">
+</div>
+   <a href="#" class="önclick"><p>Claim your free trial</p> </a>
+
+
+  <p class="TermsAndServices"> By clicking the button, you are agreeing to <br> our <a href="#">Terms and Services</a></p>
+   
+</body>
+<script>
+$(document).ready(function () {
+ const button = document.querySelector('.önclick');
+ button.addEventListener('click',(event) => {
+  $('.errormessage').remove();
+  const firstName = document.getElementById('FirstName'); 
+  const LastName =  document.getElementById('LastName'); 
+  const EmailAddress = document.getElementById('EmailAddress');
+  const Password = document.getElementById('Password');
+ const  reg = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+  if (firstName !=='') {
+    console.log(firstName.value);
+    $("<span class='errormessage'>First Name can not be empty</span>").insertAfter("#FirstName");
+    $('.FName').addClass("error");
+  $('.FName').attr("placeholder", $('<textarea />').html("").html());
+}
+ 
+ if(LastName !=='') {
+    console.log(LastName.value);
+    $("<span class='errormessage'>Last Name can not be empty</span>").insertAfter("#LastName");
+    $('.LName').addClass("error");
+  $('.LName').attr("placeholder", $('<textarea />').html("").html());
+} 
+
+if (EmailAddress.value.match(reg)) {
+  $('.EAddress').removeClass("error");
+  $('.errormessage').remove();
+} else { 
+  
+  $('.EAddress').addClass("error");
+  $('.EAddress').attr("placeholder", $('<textarea />').html("").html());
+  $("<span class='errormessage'>Looks like this is not an email</span>").insertAfter("#EmailAddress");
+}
+
+if (Password !=='') {
+  $("<span class='errormessage'>Password can not be empty</span>").insertAfter("#Password");
+    $('.Pword').addClass("error");
+  $('.Pword').attr("placeholder", $('<textarea />').html("").html());
+}  
+
+ })
+  
+});
+
+</script>
+</html>
